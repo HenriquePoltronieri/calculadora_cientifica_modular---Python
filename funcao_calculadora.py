@@ -4,6 +4,7 @@ from multiplicar import multiplicar
 from divisao import dividir
 from potencia import potencia
 from raizquadrada import raiz_quadrada
+from dolar import cotacao_dolar
 
 def calculadora():
     a = float(input("Qual o valor do primeiro número: "))
@@ -16,3 +17,7 @@ def calculadora():
     print("Divisão:", dividir(a, b))
     print("Potência:", potencia(a, b))
     print("Raiz quadrada:", raiz_quadrada(a))
+
+    cotacao = cotacao_dolar()
+    if cotacao is not None:
+        print(f"A cotação do dólar hoje é: R$ {cotacao:.2f}")
