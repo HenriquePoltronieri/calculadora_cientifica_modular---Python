@@ -1,76 +1,74 @@
 # 🧮 Calculadora Científica Modular
 
-Projeto desenvolvido em Python com arquitetura modular, onde cada operação matemática é isolada em seu próprio arquivo. Ideal para aprender conceitos de organização de código, importação de módulos e funções em Python.
+Projeto desenvolvido para a disciplina de programação do curso Técnico em Informática do **Colégio Cotemig**, com o objetivo de praticar modularização em Python, consumo de APIs externas e boas práticas de organização de código.
+
+---
+
+## 📋 Funcionalidades
+
+- ➕ Soma
+- ➖ Subtração
+- ✖️ Multiplicação
+- ➗ Divisão
+- 🔢 Potenciação
+- √ Raiz quadrada
+- 💵 Cotação do dólar em tempo real (USD → BRL)
 
 ---
 
 ## 📁 Estrutura do Projeto
 
 ```
-calculadora_cientifica/
+calculadora-cientifica/
 │
-├── main.py                  # Ponto de entrada do programa
-├── funcao_calculadora.py    # Função principal que une todos os módulos
-│
-├── soma.py                  # Operação de soma
-├── subtrair.py              # Operação de subtração
-├── multiplicar.py           # Operação de multiplicação
-├── divisao.py               # Operação de divisão (com tratamento de erro)
-├── potencia.py              # Operação de potenciação
-└── raizquadrada.py          # Operação de raiz quadrada (com tratamento de erro)
+├── main.py                  # Ponto de entrada da aplicação
+├── funcao_calculadora.py    # Orquestra todas as operações
+├── soma.py                  # Módulo de soma
+├── subtrair.py              # Módulo de subtração
+├── multiplicar.py           # Módulo de multiplicação
+├── divisao.py               # Módulo de divisão
+├── potencia.py              # Módulo de potenciação
+├── raizquadrada.py          # Módulo de raiz quadrada
+├── dolar.py                 # Módulo de cotação do dólar (API)
+└── README.md
 ```
 
 ---
 
-## ⚙️ Funcionalidades
+## 🌐 API Utilizada
 
-| Operação       | Arquivo            | Observação                              |
-|----------------|--------------------|------------------------------------------|
-| Soma           | `soma.py`          | —                                        |
-| Subtração      | `subtrair.py`      | —                                        |
-| Multiplicação  | `multiplicar.py`   | —                                        |
-| Divisão        | `divisao.py`       | Retorna erro se o divisor for zero       |
-| Potência       | `potencia.py`      | Calcula `a ** b`                         |
-| Raiz Quadrada  | `raizquadrada.py`  | Retorna erro se o número for negativo    |
+O módulo `dolar.py` consome a **AwesomeAPI** para buscar a cotação atual do dólar:
+
+```
+GET https://economia.awesomeapi.com.br/json/last/USD-BRL
+```
+
+> Não requer autenticação. Retorna o valor de compra (`bid`) do dólar em reais.
 
 ---
 
-## 🚀 Como Executar
+## ▶️ Como executar
 
 ### Pré-requisitos
 
 - Python 3.x instalado
-- (Recomendado) Ambiente virtual ativo
+- Biblioteca `requests`
 
-### Passo a passo
-
-**1. Clone ou copie os arquivos do projeto para uma pasta:**
+### Instalação da dependência
 
 ```bash
-mkdir calculadora_cientifica
-cd calculadora_cientifica
+pip install requests
 ```
 
-**2. Crie e ative um ambiente virtual:**
-
-```bash
-# Criar
-python -m venv venv
-
-# Ativar (Windows)
-venv\Scripts\activate
-
-# Ativar (Linux/macOS)
-source venv/bin/activate
-```
-
-**3. Execute o programa:**
+### Rodando o projeto
 
 ```bash
 python main.py
 ```
 
-### Exemplo de uso
+---
+
+## 💡 Exemplo de uso
 
 ```
 Qual o valor do primeiro número: 9
@@ -83,44 +81,19 @@ Multiplicação: 27.0
 Divisão: 3.0
 Potência: 729.0
 Raiz quadrada: 3.0
+A cotação do dólar hoje é: R$ 5.73
 ```
 
 ---
 
-## 🧩 Como o Projeto Funciona
+## 🛠️ Tecnologias
 
-O programa segue um fluxo simples de 3 camadas:
-
-```
-main.py
-  └── funcao_calculadora.py   ← importa e orquestra todos os módulos
-        ├── soma.py
-        ├── subtrair.py
-        ├── multiplicar.py
-        ├── divisao.py
-        ├── potencia.py
-        └── raizquadrada.py
-```
-
-1. **`main.py`** é o ponto de partida — chama a função `calculadora()`.
-2. **`funcao_calculadora.py`** solicita os valores ao usuário e exibe os resultados usando as funções importadas.
-3. Cada arquivo de operação contém apenas **uma função** responsável por um único cálculo.
+- **Python 3**
+- **requests** (HTTP client)
+- **AwesomeAPI** (cotação de moedas)
 
 ---
 
-## 🛡️ Tratamento de Erros
+## 👨‍💻 Autor
 
-- **Divisão por zero:** caso o segundo número seja `0`, a divisão retorna a mensagem `"Erro: divisão por zero"` em vez de lançar uma exceção.
-- **Raiz de número negativo:** caso o número seja negativo, a função retorna `"Erro: número negativo"`.
-
----
-
-## 📚 Conceitos Abordados
-
-- Criação e organização de módulos em Python
-- Importação com `from modulo import funcao`
-- Uso de `if __name__ == "__main__"`
-- Funções com parâmetros e retorno de valores
-- Tratamento básico de erros com condicionais
-- Boas práticas de separação de responsabilidades
-
+Desenvolvido por **Henrique** — Técnico em Informática · Colégio Cotemig · Belo Horizonte, MG
